@@ -10,29 +10,11 @@ You can install the SVG Generator library using npm:
 npm install name-of-project
 ```
 ## Usage
+
+Clone the repository to your machine with git and navigate to the parent folder to run this.
 ```
-const { Triangle, Circle, Square } = require('logo-generator');
-
-// Create a Triangle
-const triangle = new Triangle('ABC', 'blue', 'green');
-
-// Create a Circle
-const circle = new Circle('DEF', 'red', 'yellow');
-
-// Create a Square
-const square = new Square('GHI', 'purple', 'orange');
-
-// Generate SVGs for the shapes
-const triangleSVG = triangle.generateSVG();
-const circleSVG = circle.generateSVG();
-const squareSVG = square.generateSVG();
-
-console.log(triangleSVG);
-console.log(circleSVG);
-console.log(squareSVG);
+node ./index.js
 ```
-
-Replace 'logo-generator' with the actual name of your installed library from npm.
 
 Please make sure you have Node.js installed on your system before running the above commands.
 
