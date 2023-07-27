@@ -2,11 +2,12 @@
 const inquirer = require('inquirer');
 const { Triangle, Circle, Square } = require('./lib/shapes');
 const fs = require('fs');
+const path = require('path');
 
 async function generateLogo() {
   const shapeChoices = ['Triangle', 'Circle', 'Square'];
 
-  // Prompt the user for text, text color, shape, and shape color
+  // prompt the user for text, text color, shape, and shape color
   const answers = await inquirer.prompt([
     {
       type: 'input',
@@ -60,8 +61,17 @@ async function generateLogo() {
       return;
   }
 
-  // write the SVG markup to logo.svg file
-  fs.writeFile('logo.svg', svgMarkup, (err) => {
+  // Create the 'examples' folder if it doesn't exist
+  const examplesFolderPath = path.join(__dirname, 'examples');
+  if (!fs.existsSync(examplesFolderPath)) {
+    fs.mkdirSync(examplesFolderPath);
+  }
+
+  // Specify the path for the 'logo.svg' file inside the 'examples' folder
+  const logoFilePath = path.join(examplesFolderPath, 'logo.svg');
+
+  // write the SVG markup to 'examples/logo.svg' file
+  fs.writeFile(logoFilePath, svgMarkup, (err) => {
     if (err) throw err;
     console.log('Generated logo.svg');
   });
